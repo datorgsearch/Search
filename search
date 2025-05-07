@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Search Engine</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light gray background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .search-container {
+            margin-top: 50px;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        #searchBox {
+            width: 300px;
+            padding: 10px;
+        }
+
+        #suggestions {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <script async src="https://cse.google.com/cse.js?cx=32c9a41994d8548c6"></script>
+        <div class="gcse-search"></div>
+
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <script>
+        // Auto-focus on the search box when the page loads
+        window.onload = function() {
+            document.getElementById("searchBox").focus();
+        };
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        // Live search suggestions
+        function showSuggestions() {
+            let input = document.getElementById("searchBox").value.toLowerCase();
+            let suggestions = ["Arduino projects", "Web development tips", "DIY electronics", "HTML customization"];
+            let filtered = suggestions.filter(term => term.includes(input));
+            document.getElementById("suggestions").innerHTML = filtered.join("<br>");
+        }
+    </script>
+
+</body>
+</html>
